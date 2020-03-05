@@ -1,0 +1,56 @@
+msgid "month01"
+msgstr "JANUARY"
+
+msgid "month02"
+msgstr "FEBRUARY"
+
+msgid "month03"
+msgstr "MARCH"
+
+msgid "month04"
+msgstr "APRIL"
+
+msgid "month05"
+msgstr "MAY"
+
+msgid "month06"
+msgstr "JUNE"
+
+msgid "month07"
+msgstr "JULY"
+
+msgid "month08"
+msgstr "AUGUST"
+
+msgid "month09"
+msgstr "SEPTEMBER"
+
+msgid "month10"
+msgstr "OCTOBER"
+
+msgid "month11"
+msgstr "NOVEMBER"
+
+msgid "month12"
+msgstr "DECEMBER"
+
+msgid "day0"
+msgstr "Sunday"
+
+msgid "day1"
+msgstr "Monday"
+
+msgid "day2"
+msgstr "Tuesday"
+
+msgid "day3"
+msgstr "Wednesday"
+
+msgid "day4"
+msgstr "Thursday"
+
+msgid "day5"
+msgstr "Friday"
+
+msgid "day6"
+msgstr "Saturday"

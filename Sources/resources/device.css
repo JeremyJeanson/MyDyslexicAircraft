@@ -1,0 +1,16 @@
+#steps-image{
+    x:100%;
+    y:50%-50;
+  }
+  #cals-image{
+    x:100%;
+    y:50%+20;
+  }
+  #am-image{
+    x:-30;
+    y:50%+20;
+  }
+  #dist-image{
+    x:-30;
+    y:50%-50;
+  }

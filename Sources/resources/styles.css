@@ -1,0 +1,194 @@
+/* cirlce 250x250 */
+#container{
+  fill: white;
+}
+#background {
+  width: 100%;
+  height: 100%;
+  fill: black;
+}
+/* Cylce container *************************************************************/
+#cycle-container{  
+  x:50%-100;
+  y:50%-100;
+  height: 200;
+  width: 200;
+}
+/* Clock *************************************************************/
+#clock-container {
+  x: 50%-83;
+  y: 50%-35;
+}
+#clock-container image {
+  x:$;
+  height: 70;
+  width: 34;
+}  
+#clock-container .clock-doublepoints{
+  width:30;
+  href:"images/doublepoints.png";
+}
+#ampm-container{
+  x:50%-18;
+  y:50%-78;
+}
+#ampm-container image{
+  x:$;
+  width: 18;
+  height: 38;
+}
+/* Hrm *************************************************************/
+#hrm-container{
+  x:50%-46;
+  y:50%+40;
+}
+#hrm-container #iconHRM {
+  width: 38;
+  height: 38;
+  fill: #FF214A;
+}
+#hrm-container #hrm-text-container{
+  x:40;
+}
+#hrm-container #hrm-text-container image{
+  x:$;
+  width: 18;
+  height: 38;
+}
+/* Date *************************************************************/
+#date1-container{
+  y:50%-18-46;
+}
+#date2-container{
+  y:50%-18;
+}
+#date3-container{
+  y:50%+18+10;
+}
+.date-container image{
+  x:$;
+  width: 20;
+  height: 36;
+}
+
+/* Battery *************************************************************/
+#battery-container{
+  x:0;
+  y:100%-26;  
+  height: 26;
+  width: 100;
+}
+#battery-container image{
+  x:$;
+  width: 24;
+  height: 24;
+}
+#battery-container .battery-image{
+  x: 2;
+  href:"images/battery.png";
+}
+#battery-bar-value{
+  x:0;
+  y:0;
+  height: 0;
+  width: 4;
+  fill: #E5A839;
+}
+
+/* Ticks *************************************************************/
+.tickbigest{
+  x:-2;
+  y:-125;
+  width: 4;
+  height: 30;
+}
+.tickbig{
+  x:-2;
+  y:-120;
+  width: 4;
+  height: 20;
+}
+.tick{
+  x:-1;
+  y:-115;
+  width: 1;
+  height: 12;
+}
+#seconds-tick rect{
+  x:-1;
+  y:-45%;
+  width: 2;
+  height: 45%;
+  fill: red;
+}
+
+/* Stats *************************************************************/
+#statcontainer
+{
+  x:50%-125;
+  y:50%-125;
+  height: 250;
+  width: 250;
+}
+#statcontainer arc{
+  x:10;
+  y:10;
+  height: 230;
+  width: 230;
+  start-angle:0;
+  sweep-angle:90;
+  arc-width:20;
+}
+.legend{
+  height: 30;
+  width: 30;
+}
+#steps{
+  fill:#FF0000;
+}
+#steps-image{
+  href:"images/stat_steps_solid_48px.png";
+  fill:#FF0000;
+}
+#cals{
+  fill:#FF8000;
+}
+#cals-image{
+  href:"images/stat_cals_solid_48px.png";
+  fill:#FF8000;
+}
+#am{
+  fill:green;
+}
+#am-image{
+  href:"images/stat_am_solid_48px.png";
+  fill:green;
+}
+#dist{
+  fill:blue;
+}
+#dist-image{
+  href:"images/stat_dist_solid_48px.png";
+  fill:blue;  
+}
+
+/* Elevation */
+#elevation-bar-value{
+  fill:#FF0080;
+  width: 4;
+  x:100%-4;
+}
+#elevation-text-container{
+  y:100%-30;
+}
+#elevation-text-container image{
+  x:$;
+  width: 20;
+  height: 30;  
+}
+#elevation-image{
+  href:"images/stat_floors_solid_48px.png";
+  fill:#FF0080;
+  height: 30;
+  width: 30;
+}

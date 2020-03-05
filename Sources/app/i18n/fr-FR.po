@@ -1,0 +1,56 @@
+msgid "month01"
+msgstr "janvier"
+
+msgid "month02"
+msgstr "février"
+
+msgid "month03"
+msgstr "mars"
+
+msgid "month04"
+msgstr "avril"
+
+msgid "month05"
+msgstr "mai"
+
+msgid "month06"
+msgstr "juin"
+
+msgid "month07"
+msgstr "juillet"
+
+msgid "month08"
+msgstr "août"
+
+msgid "month09"
+msgstr "septembre"
+
+msgid "month10"
+msgstr "octobre"
+
+msgid "month11"
+msgstr "novembre"
+
+msgid "month12"
+msgstr "décembre"
+
+msgid "day0"
+msgstr "dimanche"
+
+msgid "day1"
+msgstr "lundi"
+
+msgid "day2"
+msgstr "mardi"
+
+msgid "day3"
+msgstr "mercredi"
+
+msgid "day4"
+msgstr "jeudi"
+
+msgid "day5"
+msgstr "vendredi"
+
+msgid "day6"
+msgstr "samedi"
