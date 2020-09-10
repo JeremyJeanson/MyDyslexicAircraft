@@ -1,4 +1,3 @@
-import * as utils from "./utils";
 // To know user activities
 import { goals, today } from "user-activity";
 import { me as appbit } from "appbit";
@@ -117,27 +116,6 @@ function valueChanged(actual: Activity, last: Activity) {
     return last === undefined
         || actual.actual !== last.actual
         || actual.goal !== last.goal;
-}
-
-// Render an activity to an arc control (with goal render and colors update)
-export function updateActivityArc(container: GraphicsElement, activity: Activity, appBackgroundColor: string): void {
-    let arc = container.getElementsByTagName("arc")[1] as ArcElement; // First Arc is used for background
-    let circle = container.getElementsByTagName("circle")[0] as CircleElement;
-    let image = container.getElementsByTagName("image")[0] as ImageElement;
-
-    // Goals ok
-    if (activity.actual >= activity.goal) {
-        circle.style.display = "inline";
-        arc.style.display = "none";
-        image.style.fill = appBackgroundColor;
-    }
-    else {
-        circle.style.display = "none";
-        arc.style.display = "inline";
-        arc.sweepAngle = utils.activityToAngle(activity.goal, activity.actual);
-        if (container.style.fill)
-            image.style.fill = container.style.fill;
-    }
 }
 
 // Reset stats (force the interface update)

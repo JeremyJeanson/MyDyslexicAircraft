@@ -5,8 +5,10 @@
   "repository": {},
   "devDependencies": {
     "@fitbit/sdk": "4.1.0",
-    "@fitbit/sdk-cli": "1.7.1",
-    "fitbit-sdk-types": "4.3.5"
+    "@fitbit/sdk-cli": "1.7.2",
+    "fitbit-sdk-types": "4.3.9",
+    "simple-fitbit-settings": "2.0.0",
+    "tslib": "2.0.1"
   },
   "fitbit": {
     "appUUID": "35ada669-0a91-4a5a-8292-e4f820fe95d5",
@@ -15,7 +17,8 @@
     "requestedPermissions": [
       "access_activity",
       "access_heart_rate",
-      "access_user_profile"
+      "access_user_profile",
+      "access_aod"
     ],
     "buildTargets": [
       "higgs",

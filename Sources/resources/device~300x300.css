@@ -1,16 +1,23 @@
-#steps-image{
-  x:100%-40;
-  y:10;
+/* Battery */
+#battery-test-container{
+  x:0;
+  y:100%-26;  
+  height: 26;
+  width: 100;
 }
-#cals-image{
-  x:100%-40;
-  y:100%-40;
+#battery-test-container .battery-image{
+  x: 2;
 }
-#am-image{
-  x:10;
-  y:100%-40;
+#battery-text{
+  x:28;
 }
-#dist-image{
-  x:10;
-  y:10;
+
+/* Elevation */
+#elevation-text-container{
+  y:100%-30;
+}
+
+#elevation-text{
+  x:30;
+  y:0;
 }

@@ -26,6 +26,7 @@ export function initialize(callback: (newValue: boolean, bpm: number, zone: Defa
   }
 }
 
+// Read data
 function getReading(): void {
   let newValue = hrm.timestamp !== lastReading;
   let heartRate = hrm.heartRate || 0;
@@ -38,6 +39,7 @@ function getReading(): void {
     user.restingHeartRate);
 }
 
+// Manage Events 
 function setupEvents(): void {
   // Dispay chanded
   display.onchange = (e) => {
@@ -53,7 +55,8 @@ function setupEvents(): void {
   };
 }
 
-function start(): void {
+// Start Hrm
+export function start(): void {
   if (!watchID) {
     hrm.start();
     getReading();
@@ -61,7 +64,8 @@ function start(): void {
   }
 }
 
-function stop(): void {
+// Stop hrm
+export function stop(): void {
   hrm.stop();
   clearInterval(watchID);
   watchID = null;

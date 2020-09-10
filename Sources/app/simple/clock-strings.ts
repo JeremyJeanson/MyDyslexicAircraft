@@ -1,31 +1,30 @@
 import clock from "clock"
-import { locale } from "user-settings";
 
 // Localisation
 import { gettext } from "i18n";
 const _months = [
-    gettext("month01"),
-    gettext("month02"),
-    gettext("month03"),
-    gettext("month04"),
-    gettext("month05"),
-    gettext("month06"),
-    gettext("month07"),
-    gettext("month08"),
-    gettext("month09"),
-    gettext("month10"),
-    gettext("month11"),
-    gettext("month12")
+    gettext("m1"),
+    gettext("m2"),
+    gettext("m3"),
+    gettext("m4"),
+    gettext("m5"),
+    gettext("m6"),
+    gettext("m7"),
+    gettext("m8"),
+    gettext("m9"),
+    gettext("m10"),
+    gettext("m11"),
+    gettext("m12")
 ];
 
 const _days = [
-    gettext("day0"),
-    gettext("day1"),
-    gettext("day2"),
-    gettext("day3"),
-    gettext("day4"),
-    gettext("day5"),
-    gettext("day6")
+    gettext("d1"),
+    gettext("d2"),
+    gettext("d3"),
+    gettext("d4"),
+    gettext("d5"),
+    gettext("d6"),
+    gettext("d7")
 ];
 
 import * as util from "./utils";
@@ -119,7 +118,6 @@ function update(date: Date): void {
     // Save or updage states
     if (ouput.Hours !== _lastFormatedDate.Hours) {
         _lastFormatedDate.Hours = ouput.Hours;
-        ouput.HoursAngle = hoursToAngle(hours, minutes);
     }
     else {
         ouput.Hours = undefined;
@@ -127,6 +125,7 @@ function update(date: Date): void {
 
     if (ouput.Minutes !== _lastFormatedDate.Minutes) {
         _lastFormatedDate.Minutes = ouput.Minutes;
+        ouput.HoursAngle = hoursToAngle(hours, minutes);
         ouput.MinutesAngle = minutesToAngle(minutes);
     }
     else {
