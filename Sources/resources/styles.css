@@ -16,7 +16,7 @@
 }
 /* Clock *************************************************************/
 #clock-container {
-  x: 50%-83;
+  x: 50%-75;
   y: 50%-35;
 }
 #clock-container image {
@@ -25,8 +25,8 @@
   width: 34;
 }  
 #clock-container .clock-doublepoints{
-  width:30;
-  href:"images/doublepoints.png";
+  width:14;
+  href:"chars/58.png";
 }
 #ampm-container{
   x:50%-18;
@@ -141,48 +141,29 @@
   height: 250;
   width: 250;
 }
-#statcontainer .stat{
+.stat{
   x:10;
   y:10;
   height: 230;
   width: 230;
-  sweep-angle:0;
   arc-width:20;
 }
- #steps{
-  fill:#FF0000;
-}
 #cals{
-  fill:#FF8000;
   start-angle:90;
 }
 #am{
-  fill:green;
   start-angle:180;
 }
 #dist{
-  fill:blue;
   start-angle:270;
 }
 
 /* Legend symbols */
-#legend{
+#activity-symbol{
   height: 38;
   width: 38;
 }
-#legend circle{
- cx:50%;
- cy:50%;
- r: 50%;
- fill: gold;
- display: none;
-}
-#legend image{
-  x:20%;
-  y:20%;
-  height: 60%;
-  width: 60%;
- }
+
  #steps-legend{
    x:100%-46;
    y:8;
@@ -234,7 +215,7 @@
   sweep-angle:62;
   fill: #E5A839;
 }
-#battery-arc-back{
+#battery-arc{
   start-angle:240;
   sweep-angle:60;
   fill: black;
@@ -242,10 +223,34 @@
 .elevation-arc-back{  
   start-angle:59;
   sweep-angle:62;
-  fill:#FF0080;
 }
-#elevation-arc-back{
+#elevation-arc{
   start-angle:60;
   sweep-angle:60;
   fill:black;
+}
+/* Weather */
+#weather-image{
+  x: 50%-40;
+  y: 50%-88;
+  height: 80;
+  width: 80;
+  href:"images/weather/9.png";
+}
+#weather-debug{
+  x:50%;
+  y:50%+12;
+  font-size: 25;
+  text-anchor: middle;
+  font-family: Seville-Bold;
+  font-weight: bold;
+  text-length:16;
+}
+#weather-temp{
+  y:50%+24;
+}
+#weather-temp image{
+  x:$;
+  width: 20;
+  height: 44;
 }

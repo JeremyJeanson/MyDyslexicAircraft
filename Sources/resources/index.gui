@@ -1,17 +1,17 @@
 <svg id="container">
   <rect id="background" />
   <!-- Battery & elevation background -->
-  <svg id="battery-value-conainer" class="bigsarcs-container">
-    <arc class="battery-arc-back back" />
-    <arc id="battery-arc-back" class="front"/> 
+  <svg id="elevation-value-container" class="bigsarcs-container">
+    <arc class="elevation-arc-back back elevation"/>
+    <arc id="elevation-arc" class="front"/>
   </svg>
-  <svg id="elevation-value-conainer" class="bigsarcs-container">
-    <arc class="elevation-arc-back back" />
-    <arc id="elevation-arc-back" class="front"/>
+  <svg id="battery-value-container" class="bigsarcs-container">
+    <arc class="battery-arc-back back" />
+    <arc id="battery-arc" class="front"/> 
   </svg>
   <!-- Battery-->
   <svg id="battery-test-container">
-    <image class="battery-image" />
+    <use id="battery-symbol" href="#battery"/>
     <svg id="battery-text">
       <image/>
       <image />
@@ -20,11 +20,8 @@
     </svg>
   </svg>
   <svg id="elevation-text-container">
-    <use id="elevation-legend" href="#legend">
-      <set href="image" attributeName="href"
-        to="images/stat_floors_solid_48px.png"/>
-      <set href="image" attributeName="fill"
-        to="#FF0080"/>     
+    <use id="elevation-legend" href="#activity-symbol" class="elevation">
+      <set href="image" attributeName="href" to="images/stat_floors_solid_48px.png"/>
     </use>
     <section id="elevation-text">
       <image />
@@ -35,33 +32,21 @@
   </svg>
   <!-- Stats -->
   <svg id="statcontainer">
-    <arc id="steps" class="stat"/>
-    <arc id="cals" class="stat"/>
-    <arc id="am" class="stat"/>
-    <arc id="dist" class="stat"/>
-    <use id="steps-legend" href="#legend">
-      <set href="image" attributeName="href"
-        to="images/stat_steps_solid_48px.png"/>
-      <set href="image" attributeName="fill"
-        to="#FF0000"/>
+    <arc id="steps" class="stat steps"/>
+    <arc id="cals" class="stat calories"/>
+    <arc id="am" class="stat activesminutes"/>
+    <arc id="dist" class="stat distance"/>
+    <use id="steps-legend" href="#activity-symbol" class="steps">
+      <set href="image" attributeName="href" to="images/stat_steps_solid_48px.png"/>
     </use>
-    <use id="cals-legend" href="#legend">
-      <set href="image" attributeName="href"
-        to="images/stat_cals_solid_48px.png"/>
-      <set href="image" attributeName="fill"
-        to="#FF8000"/>        
+    <use id="cals-legend" href="#activity-symbol" class="calories">
+      <set href="image" attributeName="href" to="images/stat_cals_solid_48px.png"/>
     </use>
-    <use id="am-legend" href="#legend">
-      <set href="image" attributeName="href"
-        to="images/stat_am_solid_48px.png"/>
-      <set href="image" attributeName="fill"
-        to="green"/>        
+    <use id="am-legend" href="#activity-symbol" class="activesminutes">
+      <set href="image" attributeName="href" to="images/stat_azm_solid_48px.png"/>
     </use>
-    <use id="dist-legend" href="#legend">
-      <set href="image" attributeName="href"
-        to="images/stat_dist_solid_48px.png"/>
-      <set href="image" attributeName="fill"
-        to="blue"/>        
+    <use id="dist-legend" href="#activity-symbol" class="distance">
+      <set href="image" attributeName="href" to="images/stat_dist_solid_48px.png"/>
     </use>
     <arc start-angle="359" class="biggest" />
     <arc start-angle="89" class="biggest" />
@@ -176,12 +161,12 @@
     </use>
     <use href="#cycleview-item">
       <section id="analog-number-12">
-        <image href="images/1.png" class="analog-number"/>
-        <image href="images/2.png" class="analog-number" x="10"/>
+        <image href="chars/49.png" class="analog-number"/>
+        <image href="chars/50.png" class="analog-number" x="10"/>
       </section>
-      <image id="analog-number-3" href="images/3.png" class="analog-number"/>
-      <image id="analog-number-6" href="images/6.png" class="analog-number"/>
-      <image id="analog-number-9" href="images/9.png" class="analog-number"/>
+      <image id="analog-number-3" href="chars/51.png" class="analog-number"/>
+      <image id="analog-number-6" href="chars/54.png" class="analog-number"/>
+      <image id="analog-number-9" href="chars/57.png" class="analog-number"/>
       <g id="analog-container" transform="translate(50%,50%)">
         <g id="mins-tick">
           <line y1="-40%" stroke-width="2"/>
@@ -197,6 +182,18 @@
         <circle r="8" /> 
         <circle r="6" fill="red" /> 
       </g>
+    </use>
+    <use href="#cycleview-item">
+      <image id="weather-image" />
+      <text id="weather-debug" />
+      <svg id="weather-temp">
+        <image/>
+        <image/>
+        <image/>
+        <image/>
+        <image/>
+        <image/>
+      </svg>
     </use>
   </use>
 </svg>

@@ -3,8 +3,8 @@
   x:0;
   y:100%-60;  
 }
-#battery-test-container .battery-image{
-  x: 0;
+#battery-symbol{
+  x: 4;
 }
 #battery-text{
   x:0;

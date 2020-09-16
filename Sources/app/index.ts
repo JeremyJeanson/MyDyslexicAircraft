@@ -1,5 +1,11 @@
 import document from "document";
 import * as util from "./simple/utils";
+import * as font from "./simple/font";
+// Display & AOD
+import * as simpleDisplay from "./simple/display";
+
+// Simpl activities
+import * as simpleActivities from "simple-fitbit-activities";
 
 // import clock from "clock";
 import * as simpleMinutes from "./simple/clock-strings";
@@ -20,7 +26,10 @@ const _dates3Container = document.getElementById("date3-container") as GraphicsE
 const _dates3 = _dates3Container.getElementsByTagName("image") as ImageElement[];
 
 // Hours
-const _cloks = document.getElementById("clock-container").getElementsByTagName("image") as ImageElement[];
+const _clocks = document.getElementById("clock-container").getElementsByTagName("image") as ImageElement[];
+const _cloksHours = _clocks.slice(0, 2);
+const _cloksMinutes = _clocks.slice(3, 5);
+
 const _hoursTick = document.getElementById("hours-tick") as GroupElement;
 const _minutesTick = document.getElementById("mins-tick") as GroupElement;
 const _secondsTick = document.getElementById("seconds-tick") as GroupElement;
@@ -29,35 +38,29 @@ const _secondsTick = document.getElementById("seconds-tick") as GroupElement;
 const _ampm = document.getElementById("ampm-container").getElementsByTagName("image") as ImageElement[];
 
 // Battery
-const _batteryValueContainer = document.getElementById("battery-value-conainer") as GraphicsElement;
-const _batteryValueMask = document.getElementById("battery-arc-back") as ArcElement;
+const _batteryValueContainer = document.getElementById("battery-value-container") as GraphicsElement;
+const _batteryValueMask = document.getElementById("battery-arc") as ArcElement;
 
 const _batteryTextContainer = document.getElementById("battery-test-container") as GraphicsElement;
 const _batteries = document.getElementById("battery-text").getElementsByTagName("image") as ImageElement[];
 
 // Stats
-const GoalColor = "gold";
-
-const StepColor = "#FF0000";
-const CalsColor = "#FF8000";
-const ActiveMinutesColor = "green";
-const DistColor = "blue";
-const ElevationColor = "#FF0080";
-
+import { ActivitySymbol } from "./simple/activity-symbol";
 const _statcontainer = document.getElementById("statcontainer") as GraphicsElement;
-const _stepsLegendSymbol = document.getElementById("steps-legend") as GraphicsElement;
-const _calsLegendSymbol = document.getElementById("cals-legend") as GraphicsElement;
-const _activeMinutesLegendSymbol = document.getElementById("am-legend") as GraphicsElement;
-const _distLegendSymbol = document.getElementById("dist-legend") as GraphicsElement;
-const _elevationLegendSymbol = document.getElementById("elevation-legend") as GraphicsElement;
+
+const _steps = new ActivitySymbol(document.getElementById("steps-legend") as GraphicsElement, _background);
+const _calories = new ActivitySymbol(document.getElementById("cals-legend") as GraphicsElement, _background);
+const _activesMinutes = new ActivitySymbol(document.getElementById("am-legend") as GraphicsElement, _background);
+const _distance = new ActivitySymbol(document.getElementById("dist-legend") as GraphicsElement, _background);
+const _elevation = new ActivitySymbol(document.getElementById("elevation-legend") as GraphicsElement, _background);
 
 const _stepsArc = document.getElementById("steps") as ArcElement;
 const _calsArc = document.getElementById("cals") as ArcElement;
 const _amArc = document.getElementById("am") as ArcElement;
 const _distArc = document.getElementById("dist") as ArcElement;
 
-const _elevationValueContainer = document.getElementById("elevation-value-conainer") as GraphicsElement;
-const _elevationValueMask = document.getElementById("elevation-arc-back") as ArcElement;
+const _elevationValueContainer = document.getElementById("elevation-value-container") as GraphicsElement;
+const _elevationValueMask = document.getElementById("elevation-arc") as ArcElement;
 
 const _elevationTextscontainer = document.getElementById("elevation-text-container") as GraphicsElement;
 const _elevationTexts = document.getElementById("elevation-text").getElementsByTagName("image") as ImageElement[];
@@ -68,23 +71,6 @@ const _iconHRM = document.getElementById("iconHRM") as GraphicsElement;
 const _imgHRM = document.getElementById("icon") as ImageElement;
 const _hrmTexts = document.getElementById("hrm-text-container").getElementsByTagName("image") as ImageElement[];
 
-class Goals {
-  stepsIsHover: boolean;
-  calsIsHover: boolean;
-  activeMinutesIsHover: boolean;
-  distIsHover: boolean;
-  elevationsIsHover: boolean;
-  public reset(): void {
-    this.stepsIsHover = false;
-    this.calsIsHover = false;
-    this.activeMinutesIsHover = false;
-    this.distIsHover = false;
-    this.elevationsIsHover = false;
-  }
-}
-
-const _goeals = new Goals();
-
 let lastBpm: number;
 
 // Import the settigns module
@@ -94,24 +80,26 @@ import { Settings } from "../common/settings";
 // Current settings
 const _settings = new Settings();
 
+// Weather
+const _weatherTextContainer = document.getElementById("weather-temp") as GraphicsElement;
+
 // --------------------------------------------------------------------------------
 // Clock
 // --------------------------------------------------------------------------------
 // Update the clock every seconds
 simpleMinutes.initialize("seconds", (clock) => {
-  // date for screenshots
-  //clock.Date = "jun 23";
+  const folder: font.folder = simpleDisplay.isInAodMode()
+    ? "chars-aod"
+    : "chars";
 
   // Hours
   if (clock.Hours) {
-    _cloks[0].href = util.getImageFromLeft(clock.Hours, 0);
-    _cloks[1].href = util.getImageFromLeft(clock.Hours, 1);
+    font.print(clock.Hours, _cloksHours, folder);
   }
 
   // Minutes
   if (clock.Minutes) {
-    _cloks[3].href = util.getImageFromLeft(clock.Minutes, 0);
-    _cloks[4].href = util.getImageFromLeft(clock.Minutes, 1);
+    font.print(clock.Minutes, _cloksMinutes, folder);
     _hoursTick.groupTransform.rotate.angle = clock.HoursAngle;
     _minutesTick.groupTransform.rotate.angle = clock.MinutesAngle;
   }
@@ -119,7 +107,7 @@ simpleMinutes.initialize("seconds", (clock) => {
 
   // AM or PM
   if (clock.AmOrPm) {
-    util.display(clock.AmOrPm, _ampm);
+    font.print(clock.AmOrPm, _ampm);
   }
 
   // Date 1
@@ -127,7 +115,7 @@ simpleMinutes.initialize("seconds", (clock) => {
     // Position
     _dates1Container.x = 100 - (clock.Date1.length * 10);
     // Values
-    util.display(clock.Date1, _dates1);
+    font.print(clock.Date1, _dates1);
   }
 
   // Date 2
@@ -135,7 +123,7 @@ simpleMinutes.initialize("seconds", (clock) => {
     // Position
     _dates2Container.x = 100 - (clock.Date2.length * 10);
     // Values
-    util.display(clock.Date2, _dates2);
+    font.print(clock.Date2, _dates2);
   }
 
   // Date 3
@@ -143,35 +131,38 @@ simpleMinutes.initialize("seconds", (clock) => {
     // Position
     _dates3Container.x = 100 - (clock.Date3.length * 10);
     // Values
-    util.display(clock.Date3, _dates3);
+    font.print(clock.Date3, _dates3);
   }
 
   // update od stats
   UpdateActivities();
 });
 
+function setHoursMinutes(folder: font.folder) {
+  // Hours
+  font.print(simpleMinutes.last.Hours + ":" + simpleMinutes.last.Minutes, _clocks, folder);
+}
+
 // --------------------------------------------------------------------------------
 // Power
 // --------------------------------------------------------------------------------
-import * as batterySimple from "./simple/power-battery";
+import * as simpleBattery from "./simple/battery";
 
 // Method to update battery level informations
-batterySimple.initialize((battery) => {
+simpleBattery.initialize((battery) => {
   const batteryString = device.screen.height > 250
     ? battery.toString() + "%" // Versa and up
     : battery.toString(); // Ionic
+  // Battery text
+  font.print(batteryString, _batteries);
   const angle = Math.floor(100 - battery) * 60 / 100;
   // Battery arc
   _batteryValueMask.startAngle = 300 - angle;
   _batteryValueMask.sweepAngle = angle;
-
-  // Battery text
-  util.display(batteryString, _batteries);
 });
 // --------------------------------------------------------------------------------
 // Activity
 // --------------------------------------------------------------------------------
-import * as simpleActivities from "./simple/activities"
 
 // Init
 simpleActivities.initialize(UpdateActivities);
@@ -190,109 +181,75 @@ function UpdateActivities() {
 
   // Steps
   if (activities.steps !== undefined) {
-    const isHoverGoal = updateActivity(activities.steps, StepColor, _stepsArc);
-
+    updateActivity(activities.steps, "steps", _stepsArc, _steps);
+    // Position
     if (startposition) {
       _stepsArc.startAngle = 0;
     }
     else {
       _stepsArc.startAngle = 90 - _stepsArc.sweepAngle;
     }
-    // Animation?
-    if (_goeals.stepsIsHover !== isHoverGoal) {
-      UpdateActivityLegent(_stepsLegendSymbol, StepColor, isHoverGoal);
-      _goeals.stepsIsHover = isHoverGoal;
-    }
   }
 
   // Calories
   if (activities.calories !== undefined) {
-    const isHoverGoal = updateActivity(activities.calories, CalsColor, _calsArc);
-    // Animation?
-    if (_goeals.calsIsHover !== isHoverGoal) {
-      UpdateActivityLegent(_calsLegendSymbol, CalsColor, isHoverGoal);
-      _goeals.calsIsHover = isHoverGoal;
-    }
+    updateActivity(activities.calories, "calories", _calsArc, _calories);
   }
 
   // Active minutes
-  if (activities.activeMinutes !== undefined) {
-    const isHoverGoal = updateActivity(activities.activeMinutes, ActiveMinutesColor, _amArc);
+  if (activities.activeZoneMinutes !== undefined) {
+    updateActivity(activities.activeZoneMinutes, "activesminutes", _amArc, _activesMinutes);
+    // Position
     if (startposition) {
       _amArc.startAngle = 180;
     }
     else {
       _amArc.startAngle = 270 - _amArc.sweepAngle;
     }
-    // Animation?
-    if (_goeals.activeMinutesIsHover !== isHoverGoal) {
-      UpdateActivityLegent(_activeMinutesLegendSymbol, ActiveMinutesColor, isHoverGoal);
-      _goeals.activeMinutesIsHover = isHoverGoal;
-    }
   }
 
   // Disance
   if (activities.distance !== undefined) {
-    const isHoverGoal = updateActivity(activities.distance, DistColor, _distArc);
-    // Animation?
-    if (_goeals.distIsHover !== isHoverGoal) {
-      UpdateActivityLegent(_distLegendSymbol, DistColor, isHoverGoal);
-      _goeals.distIsHover = isHoverGoal;
-    }
+    updateActivity(activities.distance, "distance", _distArc, _distance);
   }
 
   // Elevation
   if (simpleActivities.elevationIsAvailable() && activities.elevationGain !== undefined) {
-    const isHoverGoal = updateElevation(activities.elevationGain);
-    // Animation?
-    if (_goeals.elevationsIsHover !== isHoverGoal) {
-      UpdateActivityLegent(_elevationLegendSymbol, ElevationColor, isHoverGoal);
-      _goeals.elevationsIsHover = isHoverGoal;
-    }
+    updateElevation(activities.elevationGain);
   }
+}
+
+function refreshActivitiesColors() {
+  _steps.refresh();
+  _calories.refresh();
+  _activesMinutes.refresh();
+  _distance.refresh();
+  _elevation.refresh();
 }
 
 // update activity arc
-function updateActivity(activity: simpleActivities.Activity, color: string, arc: ArcElement): boolean {
+function updateActivity(activity: simpleActivities.Activity, css: string, arc: ArcElement, symbol: ActivitySymbol) {
   // Test if goals is reached
-  const isHoverGoal: boolean = activity.actual >= activity.goal
-  if (isHoverGoal) {
+  if (activity.goalReached()) {
+    arc.class = "stat goalreached";
     arc.sweepAngle = 90;
-    util.fill(arc, GoalColor);
   }
   else {
+    arc.class = "stat " + css;
     arc.sweepAngle = util.activityToAngle90(activity.goal, activity.actual);
-    util.fill(arc, color);
   }
-
-  return isHoverGoal;
-}
-
-// update legend symbol stat
-function UpdateActivityLegent(legend: GraphicsElement, color: string, isHoverGoal: boolean) {
-  const image = legend.getElementById("image") as ImageElement;
-  const circle = legend.getElementById("circle") as ImageElement;
-
-  // Test stat
-  if (isHoverGoal) {
-    util.show(circle);
-    util.fill(image, _settings.colorBackground);
-    util.highlight(legend);
-  }
-  else {
-    util.hide(circle);
-    util.fill(image, color);
-  }
+  // Legend updated
+  symbol.set(activity);
 }
 
 // update elevation
-function updateElevation(activity: simpleActivities.Activity): boolean {
-  const isHoverGoal: boolean = activity.actual >= activity.goal;
-  if (isHoverGoal) {
+function updateElevation(activity: simpleActivities.Activity) {
+  const goalReached: boolean = activity.goalReached();
+  if (goalReached) {
     _elevationValueMask.sweepAngle = 0;
   }
   else {
-    const purcent = getPurcent(activity);
+    const purcent = activity.asPourcent();
     _elevationValueMask.sweepAngle = 60 * (100 - purcent) / 100;
   }
 
@@ -309,22 +266,11 @@ function updateElevation(activity: simpleActivities.Activity): boolean {
     _elevationTextscontainer.x = device.screen.width - text.length * 20 - 30;
   }
 
-  // Uodate texts
-  util.display(text, _elevationTexts);
+  // Legend
+  _elevation.set(activity);
 
-  return isHoverGoal;
-}
-
-// % of an activity
-function getPurcent(activity: simpleActivities.Activity): number {
-  if (activity.goal <= 0) {
-    return 0;
-  }
-  if (activity.goal) {
-    if (activity.goal > activity.goal) return 100;
-    return (activity.actual || 0) * 100 / activity.goal;
-  }
-  return 0;
+  // Update texts
+  font.print(text, _elevationTexts);
 }
 
 // --------------------------------------------------------------------------------
@@ -345,8 +291,39 @@ simpleHRM.initialize((newValue, bpm, zone, restingHeartRate) => {
 
   // BPM value display
   if (bpm !== lastBpm && bpm > 0) {
-    util.display(bpm.toString(), _hrmTexts);
+    font.print(bpm.toString(), _hrmTexts);
   }
+});
+// --------------------------------------------------------------------------------
+// Weather
+// --------------------------------------------------------------------------------
+import * as simpleWeather from "simple-fitbit-weather/app";
+import { units } from "user-settings";
+import { gettext } from 'i18n';
+
+simpleWeather.initialize((weather) => {
+  if (weather === undefined) return;
+  // debug
+  const debugText = document.getElementById("weather-debug") as TextElement;
+  debugText.text = gettext("w" + weather.conditionCode);
+
+  // update image
+  const image = document.getElementById("weather-image") as ImageElement;
+  image.href = `weather/${weather.conditionCode}.png`;
+
+  // update text
+  const texts = _weatherTextContainer.getElementsByTagName("image") as ImageElement[];
+  const temp = (units.temperature === "C"
+    ? Math.round(weather.temperatureC)
+    : Math.round(weather.temperatureF))
+    + "°" + units.temperature;
+  // Display
+  font.print(temp, texts);
+  // Center text
+  _weatherTextContainer.x = 100 - temp.length * 10;
+
+  // Log
+  //console.log(JSON.stringify(weather));  
 });
 
 // --------------------------------------------------------------------------------
@@ -377,10 +354,7 @@ appSettings.initialize(
         util.fill(_background, value);
         util.fill(_batteryValueMask, value);
         util.fill(_elevationValueMask, value);
-
-        simpleActivities.reset();
-        _goeals.reset();
-        UpdateActivities(); // For achivement color
+        refreshActivitiesColors();
       }
 
       if (newSettings.graduationForeground !== undefined) {
@@ -406,63 +380,51 @@ appSettings.initialize(
 // --------------------------------------------------------------------------------
 // Allway On Display
 // --------------------------------------------------------------------------------
-import { me } from "appbit";
-import { display } from "display";
-import clock from "clock"
+simpleDisplay.initialize(onEnteredAOD, onLeavedAOD, onDisplayGoOn);
 
-display.addEventListener("change", () => {
-  if (display.on) {
-    if (_goeals.activeMinutesIsHover) util.highlight(_activeMinutesLegendSymbol);
-    if (_goeals.calsIsHover) util.highlight(_calsLegendSymbol);
-    if (_goeals.distIsHover) util.highlight(_distLegendSymbol);
-    if (_goeals.stepsIsHover) util.highlight(_stepsLegendSymbol);
-    if (_goeals.elevationsIsHover) util.highlight(_elevationLegendSymbol);
+function onEnteredAOD() {
+  // Stop sensors
+  simpleHRM.stop();
+
+  // Clock
+  setHoursMinutes("chars-aod");
+
+  // Hide elements
+  util.hide(_background);
+  util.hide(_batteryTextContainer);
+  util.hide(_batteryValueContainer);
+  util.hide(_statcontainer);
+  util.hide(_elevationValueContainer);
+  util.hide(_elevationTextscontainer);
+  util.hide(_hrmContainer);
+  util.hide(_secondsTick);
+  util.hide(_weatherTextContainer);
+}
+
+function onLeavedAOD() {
+  // Show elements & start sensors
+  _background.style.display = "inline";
+  // Clock
+  setHoursMinutes("chars");
+  if (_settings.showBatteryPourcentage) util.show(_batteryTextContainer);
+  if (_settings.showBatteryBar) util.show(_batteryValueContainer);
+  util.show(_statcontainer);
+  if (simpleActivities.elevationIsAvailable) {
+    util.show(_elevationValueContainer);
+    util.show(_elevationTextscontainer);
   }
-});
+  util.show(_hrmContainer);
+  util.show(_secondsTick);
+  util.show(_weatherTextContainer);
 
-// does the device support AOD, and can I use it?
-if (display.aodAvailable && me.permissions.granted("access_aod")) {
-  // tell the system we support AOD
-  display.aodAllowed = true;
+  // Start sensors
+  simpleHRM.start();
+}
 
-  // respond to display change events
-  display.addEventListener("change", () => {
-
-    // console.info(`${display.aodAvailable} ${display.aodEnabled} ${me.permissions.granted("access_aod")} ${display.aodAllowed} ${display.aodActive}`);
-
-    // Is AOD inactive and the display is on?
-    if (!display.aodActive && display.on) {
-      clock.granularity = "seconds";
-
-      // Show elements & start sensors
-      _background.style.display = "inline";
-      if (_settings.showBatteryPourcentage) util.show(_batteryTextContainer);
-      if (_settings.showBatteryBar) util.show(_batteryValueContainer);
-      util.show(_statcontainer);
-      if (simpleActivities.elevationIsAvailable) {
-        util.show(_elevationValueContainer);
-        util.show(_elevationTextscontainer);
-      }
-      util.show(_hrmContainer);
-      util.show(_secondsTick);
-
-      // Start sensors
-      simpleHRM.start();
-    } else {
-      clock.granularity = "minutes";
-
-      // Stop sensors
-      simpleHRM.stop();
-
-      // Hide elements
-      util.hide(_background);
-      util.hide(_batteryTextContainer);
-      util.hide(_batteryValueContainer);
-      util.hide(_statcontainer);
-      util.hide(_elevationValueContainer);
-      util.hide(_elevationTextscontainer);
-      util.hide(_hrmContainer);
-      util.hide(_secondsTick);
-    }
-  });
+function onDisplayGoOn() {
+  _steps.onDiplayGoOn();
+  _calories.onDiplayGoOn();
+  _activesMinutes.onDiplayGoOn();
+  _distance.onDiplayGoOn();
+  _elevation.onDiplayGoOn();
 }

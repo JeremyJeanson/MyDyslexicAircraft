@@ -5,7 +5,7 @@
   height: 26;
   width: 100;
 }
-#battery-test-container .battery-image{
+#battery-symbol{
   x: 2;
 }
 #battery-text{

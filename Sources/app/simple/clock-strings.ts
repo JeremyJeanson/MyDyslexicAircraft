@@ -27,7 +27,6 @@ const _days = [
     gettext("d7")
 ];
 
-import * as util from "./utils";
 type Granularity = "off" | "seconds" | "minutes" | "hours";
 type AmOrPm = "AM" | "PM" | "  ";
 
@@ -53,7 +52,7 @@ let _clockDisplay24: boolean;
 let _lastDate: Date;
 
 // Ouputs
-let _lastFormatedDate: FormatedDate;
+export let last: FormatedDate;
 
 // Initialize the call back
 export function initialize(granularity: Granularity, callback: (clock: FormatedDate) => void): void {
@@ -74,11 +73,6 @@ export function updateClockDisplay24(value: boolean): void {
     update(_lastDate);
 }
 
-// Return the last date
-export function getLast(): FormatedDate {
-    return _lastFormatedDate;
-}
-
 // Update the clock
 function update(date: Date): void {
     if (date === undefined) return;
@@ -86,8 +80,8 @@ function update(date: Date): void {
     _lastDate = date;
 
     // Las output
-    if (_lastFormatedDate === undefined) {
-        _lastFormatedDate = new FormatedDate();
+    if (last === undefined) {
+        last = new FormatedDate();
     }
 
     // Declare ouputs
@@ -110,21 +104,21 @@ function update(date: Date): void {
     }
 
     // Format the minutes
-    ouput.Minutes = util.zeroPad(minutes);
+    ouput.Minutes = zeroPad(minutes);
 
     // Format the date
     setDate(ouput, date);
 
     // Save or updage states
-    if (ouput.Hours !== _lastFormatedDate.Hours) {
-        _lastFormatedDate.Hours = ouput.Hours;
+    if (ouput.Hours !== last.Hours) {
+        last.Hours = ouput.Hours;
     }
     else {
         ouput.Hours = undefined;
     }
 
-    if (ouput.Minutes !== _lastFormatedDate.Minutes) {
-        _lastFormatedDate.Minutes = ouput.Minutes;
+    if (ouput.Minutes !== last.Minutes) {
+        last.Minutes = ouput.Minutes;
         ouput.HoursAngle = hoursToAngle(hours, minutes);
         ouput.MinutesAngle = minutesToAngle(minutes);
     }
@@ -132,29 +126,29 @@ function update(date: Date): void {
         ouput.Minutes = undefined;
     }
 
-    if (ouput.Date1 !== _lastFormatedDate.Date1) {
-        _lastFormatedDate.Date1 = ouput.Date1;
+    if (ouput.Date1 !== last.Date1) {
+        last.Date1 = ouput.Date1;
     }
     else {
         ouput.Date1 = undefined;
     }
 
-    if (ouput.Date2 !== _lastFormatedDate.Date2) {
-        _lastFormatedDate.Date2 = ouput.Date2;
+    if (ouput.Date2 !== last.Date2) {
+        last.Date2 = ouput.Date2;
     }
     else {
         ouput.Date2 = undefined;
     }
 
-    if (ouput.Date3 !== _lastFormatedDate.Date3) {
-        _lastFormatedDate.Date3 = ouput.Date3;
+    if (ouput.Date3 !== last.Date3) {
+        last.Date3 = ouput.Date3;
     }
     else {
         ouput.Date3 = undefined;
     }
 
-    if (ouput.AmOrPm !== _lastFormatedDate.AmOrPm) {
-        _lastFormatedDate.AmOrPm = ouput.AmOrPm;
+    if (ouput.AmOrPm !== last.AmOrPm) {
+        last.AmOrPm = ouput.AmOrPm;
     }
     else {
         ouput.AmOrPm = undefined;
@@ -168,7 +162,7 @@ function update(date: Date): void {
 function formatHours(hours: number): string {
     if (hours === undefined) return undefined;
     let result = _clockDisplay24 === undefined || _clockDisplay24 === true
-        ? util.zeroPad(hours)
+        ? zeroPad(hours)
         : (hours % 12 || 12).toString();
     if (result.length === 1) result = " " + result;
     return result;
@@ -198,4 +192,11 @@ function minutesToAngle(minutes: number): number {
 // Returns an angle (0-360) for seconds
 function secondsToAngle(seconds: number): number {
     return (360 / 60) * seconds;
+}
+
+// Add zero in front of numbers < 10
+function zeroPad(i: number): string {
+    return i < 10
+        ? "0" + i
+        : i.toString();
 }

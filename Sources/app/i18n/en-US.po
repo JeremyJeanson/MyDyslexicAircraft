@@ -1,38 +1,38 @@
 msgid "m1"
-msgstr "JANUARY"
+msgstr "January"
 
 msgid "m2"
-msgstr "FEBRUARY"
+msgstr "February"
 
 msgid "m3"
-msgstr "MARCH"
+msgstr "March"
 
 msgid "m4"
-msgstr "APRIL"
+msgstr "April"
 
 msgid "m5"
-msgstr "MAY"
+msgstr "May"
 
 msgid "m6"
-msgstr "JUNE"
+msgstr "June"
 
 msgid "m7"
-msgstr "JULY"
+msgstr "July"
 
 msgid "m8"
-msgstr "AUGUST"
+msgstr "August"
 
 msgid "m9"
-msgstr "SEPTEMBER"
+msgstr "September"
 
 msgid "m10"
-msgstr "OCTOBER"
+msgstr "October"
 
 msgid "m11"
-msgstr "NOVEMBER"
+msgstr "November"
 
 msgid "m12"
-msgstr "DECEMBER"
+msgstr "December"
 
 msgid "d1"
 msgstr "Sunday"
@@ -54,3 +54,33 @@ msgstr "Friday"
 
 msgid "d7"
 msgstr "Saturday"
+
+msgid "w0"
+msgstr "Clear sky"
+
+msgid "w1"
+msgstr "Few clouds"
+
+msgid "w2"
+msgstr "Scattered clouds"
+
+msgid "w3"
+msgstr "Broken clouds"
+
+msgid "w4"
+msgstr "Shower rain"
+
+msgid "w5"
+msgstr "Rain"
+
+msgid "w6"
+msgstr "Thunderstorm"
+
+msgid "w7"
+msgstr "Snow"
+
+msgid "w8"
+msgstr "Mist"
+
+msgid "w9"
+msgstr "Unknown"

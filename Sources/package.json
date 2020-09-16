@@ -4,11 +4,13 @@
   "license": "MIT",
   "repository": {},
   "devDependencies": {
-    "@fitbit/sdk": "4.1.0",
-    "@fitbit/sdk-cli": "1.7.2",
-    "fitbit-sdk-types": "4.3.9",
-    "simple-fitbit-settings": "2.0.0",
-    "tslib": "2.0.1"
+    "@fitbit/sdk": "4.2.1",
+    "@fitbit/sdk-cli": "1.7.3",
+    "fitbit-sdk-types": "5.0.0",
+    "tslib": "2.0.1",
+    "simple-fitbit-settings": "2.0.2",
+    "simple-fitbit-activities": "1.0.1",
+    "simple-fitbit-weather": "0.0.1-alpha5"
   },
   "fitbit": {
     "appUUID": "35ada669-0a91-4a5a-8292-e4f820fe95d5",
@@ -18,7 +20,10 @@
       "access_activity",
       "access_heart_rate",
       "access_user_profile",
-      "access_aod"
+      "access_aod",
+      "run_background",
+      "access_location",
+      "access_internet"
     ],
     "buildTargets": [
       "higgs",
