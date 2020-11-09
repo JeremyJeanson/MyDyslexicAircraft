@@ -1,0 +1,199 @@
+<svg id="container">
+  <rect id="background" />
+  <!-- Battery & elevation background -->
+  <svg id="elevation-value-container" class="bigsarcs-container">
+    <arc class="elevation-arc-back back elevation"/>
+    <arc id="elevation-arc" class="front"/>
+  </svg>
+  <svg id="battery-value-container" class="bigsarcs-container">
+    <arc class="battery-arc-back back" />
+    <arc id="battery-arc" class="front"/> 
+  </svg>
+  <!-- Battery-->
+  <svg id="battery-test-container">
+    <use id="battery-symbol" href="#battery"/>
+    <svg id="battery-text">
+      <image/>
+      <image />
+      <image />
+      <image />
+    </svg>
+  </svg>
+  <svg id="elevation-text-container">
+    <use id="elevation-legend" href="#activity-symbol" class="elevation">
+      <set href="image" attributeName="href" to="images/floors_36px.png"/>
+    </use>
+    <section id="elevation-text">
+      <image />
+      <image />
+      <image />
+      <image />
+    </section>
+  </svg>
+  <!-- Stats -->
+  <svg id="statcontainer">
+    <arc id="steps" class="stat steps"/>
+    <arc id="cals" class="stat calories"/>
+    <arc id="am" class="stat activesminutes"/>
+    <arc id="dist" class="stat distance"/>
+    <use id="steps-legend" href="#activity-symbol" class="steps">
+      <set href="image" attributeName="href" to="images/steps_36px.png"/>
+    </use>
+    <use id="cals-legend" href="#activity-symbol" class="calories">
+      <set href="image" attributeName="href" to="images/calories_36px.png"/>
+    </use>
+    <use id="am-legend" href="#activity-symbol" class="activesminutes">
+      <set href="image" attributeName="href" to="images/azm_36px.png"/>
+    </use>
+    <use id="dist-legend" href="#activity-symbol" class="distance">
+      <set href="image" attributeName="href" to="images/distance_36px.png"/>
+    </use>
+    <arc start-angle="359" class="biggest" />
+    <arc start-angle="89" class="biggest" />
+    <arc start-angle="179" class="biggest" />
+    <arc start-angle="269" class="biggest" />
+    <arc start-angle="29" class="big" />
+    <arc start-angle="59" class="big" />
+    <arc start-angle="119" class="big" />
+    <arc start-angle="149" class="big" />
+    <arc start-angle="209" class="big" />
+    <arc start-angle="239" class="big" />
+    <arc start-angle="299" class="big" />
+    <arc start-angle="329" class="big" />
+    <arc start-angle="6" class="small"/>
+    <arc start-angle="12" class="small"/>
+    <arc start-angle="18" class="small"/>
+    <arc start-angle="24" class="small"/>
+    <arc start-angle="36" class="small"/>
+    <arc start-angle="42" class="small"/>
+    <arc start-angle="48" class="small"/>
+    <arc start-angle="54" class="small"/>    
+    <arc start-angle="66" class="small"/>
+    <arc start-angle="72" class="small"/>
+    <arc start-angle="78" class="small"/>
+    <arc start-angle="84" class="small"/>
+    <arc start-angle="96" class="small"/>
+    <arc start-angle="102" class="small"/>
+    <arc start-angle="108" class="small"/>
+    <arc start-angle="114" class="small"/>
+    <arc start-angle="126" class="small"/>
+    <arc start-angle="132" class="small"/>
+    <arc start-angle="138" class="small"/>
+    <arc start-angle="144" class="small"/>    
+    <arc start-angle="156" class="small"/>
+    <arc start-angle="162" class="small"/>
+    <arc start-angle="168" class="small"/>
+    <arc start-angle="174" class="small"/>
+    <arc start-angle="186" class="small"/>
+    <arc start-angle="192" class="small"/>
+    <arc start-angle="198" class="small"/>
+    <arc start-angle="204" class="small"/>
+    <arc start-angle="216" class="small"/>
+    <arc start-angle="222" class="small"/>
+    <arc start-angle="228" class="small"/>
+    <arc start-angle="234" class="small"/>
+    <arc start-angle="246" class="small"/>
+    <arc start-angle="252" class="small"/>
+    <arc start-angle="258" class="small"/>
+    <arc start-angle="264" class="small"/>
+    <arc start-angle="276" class="small"/>
+    <arc start-angle="282" class="small"/>
+    <arc start-angle="288" class="small"/>
+    <arc start-angle="294" class="small"/>
+    <arc start-angle="306" class="small"/>
+    <arc start-angle="312" class="small"/>
+    <arc start-angle="318" class="small"/>
+    <arc start-angle="324" class="small"/>
+    <arc start-angle="336" class="small"/>
+    <arc start-angle="342" class="small"/>
+    <arc start-angle="348" class="small"/>
+    <arc start-angle="354" class="small"/>
+  </svg>
+  <use id="cycle-container" href="#cycleview">
+    <use href="#cycleview-item">
+      <section id="ampm-container">
+        <image />
+        <image />
+      </section>
+      <section id="clock-container">
+        <image />
+        <image />
+        <image class="clock-doublepoints" />
+        <image />
+        <image />
+      </section>
+      <svg id="hrm-container">
+        <use id="iconHRM" href="#heart-beat" />
+        <section id="hrm-text-container">
+          <image />
+          <image />
+          <image />
+        </section>
+      </svg>
+    </use>
+    <use href="#cycleview-item">
+      <svg id="date1-container" class="date-container">
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+      </svg>  
+      <svg id="date2-container" class="date-container">
+        <image />
+        <image />
+      </svg>  
+      <svg id="date3-container" class="date-container">
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+        <image />
+      </svg>  
+    </use>
+    <use href="#cycleview-item">
+      <section id="analog-number-12">
+        <image href="chars/49.png" class="analog-number"/>
+        <image href="chars/50.png" class="analog-number" x="10"/>
+      </section>
+      <image id="analog-number-3" href="chars/51.png" class="analog-number"/>
+      <image id="analog-number-6" href="chars/54.png" class="analog-number"/>
+      <image id="analog-number-9" href="chars/57.png" class="analog-number"/>
+      <g id="analog-container" transform="translate(50%,50%)">
+        <g id="mins-tick">
+          <line y1="-40%" stroke-width="2"/>
+          <line y1="-40%" y2="-8%" stroke-width="5"/>
+          <line y1="-38%" y2="-10%" stroke-width="2" fill="red"/>        
+        </g>    
+        <g id="hours-tick">
+          <line y1="-25%" stroke-width="2"/>
+          <line y1="-25%" y2="-8%" stroke-width="9"/>
+          <line y1="-23%" y2="-10%" stroke-width="4" fill="red"/>
+        </g>    
+        <g id="seconds-tick"><rect /></g>   
+        <circle r="8" /> 
+        <circle r="6" fill="red" /> 
+      </g>
+    </use>
+    <use href="#cycleview-item">
+      <image id="weather-image" />
+      <text id="weather-debug" />
+      <svg id="weather-temp">
+        <image/>
+        <image/>
+        <image/>
+        <image/>
+        <image/>
+        <image/>
+      </svg>
+    </use>
+  </use>
+</svg>

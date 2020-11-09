@@ -1,0 +1,24 @@
+/* Battery */
+#battery-test-container{
+  x:50%-60;
+  y:10;  
+  height: 26;
+  width: 100;
+}
+#battery-symbol{
+  x: 2;
+}
+#battery-text{
+  x:28;
+}
+
+/* Elevation */
+#elevation-text-container{
+  x:50%-120;
+  y:100%-40;
+}
+
+#elevation-text{
+  x:34;
+  y:0;
+}

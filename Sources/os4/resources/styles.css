@@ -1,0 +1,256 @@
+/* cirlce 250x250 */
+#container{
+  fill: white;
+}
+#background {
+  width: 100%;
+  height: 100%;
+  fill: black;
+}
+/* Cylce container *************************************************************/
+#cycle-container{  
+  x:50%-100;
+  y:50%-100;
+  height: 200;
+  width: 200;
+}
+/* Clock *************************************************************/
+#clock-container {
+  x: 50%-75;
+  y: 50%-35;
+}
+#clock-container image {
+  x:$;
+  height: 70;
+  width: 34;
+}  
+#clock-container .clock-doublepoints{
+  width:14;
+  href:"images/chars/58.png";
+}
+#ampm-container{
+  x:50%-18;
+  y:50%-78;
+}
+#ampm-container image{
+  x:$;
+  width: 18;
+  height: 38;
+}
+/* Hrm *************************************************************/
+#hrm-container{
+  x:50%-46;
+  y:50%+40;
+}
+#hrm-container #iconHRM {
+  width: 38;
+  height: 38;
+  fill: #FF214A;
+}
+#hrm-container #hrm-text-container{
+  x:40;
+}
+#hrm-container #hrm-text-container image{
+  x:$;
+  width: 18;
+  height: 38;
+}
+/* Date *************************************************************/
+#date1-container{
+  y:50%-18-46;
+}
+#date2-container{
+  y:50%-18;
+}
+#date3-container{
+  y:50%+18+10;
+}
+.date-container image{
+  x:$;
+  width: 20;
+  height: 36;
+}
+
+/* Battery *************************************************************/
+#battery-test-container image{
+  x:$;
+  width: 24;
+  height: 24;
+}
+#battery-test-container .battery-image{
+  href:"images/battery.png";
+}
+/* Ticks *************************************************************/
+#seconds-tick rect{
+  x:-1;
+  y:-45%;
+  width: 2;
+  height: 45%;
+  fill: red;
+}
+.analog-number{
+  height: 20;
+  width: 10;
+}
+#analog-number-12{
+  x:50%-10;
+  y:10;
+}
+#analog-number-3{
+  x:100%-20;
+  y:50%-10;
+}
+#analog-number-6{
+  x:50%-5;
+  y:100%-30;
+}
+#analog-number-9{
+  x:10;
+  y:50%-10;
+}
+/* arcs ticks */
+#statcontainer .small{
+  x:4%;
+  y:4%;
+  height: 92%;
+  width: 92%;
+  sweep-angle: 1; 
+  arc-width: 12;
+} 
+#statcontainer .biggest{
+  x:0;
+  y:0;
+  height: 100%;
+  width: 100%;
+  sweep-angle: 2; 
+  arc-width: 30;
+} 
+#statcontainer .big{
+  x:2%;
+  y:2%;
+  height: 96%;
+  width: 96%;
+  sweep-angle: 2; 
+  arc-width: 20;
+} 
+/* Stats *************************************************************/
+#statcontainer
+{
+  x:50%-125;
+  y:50%-125;
+  height: 250;
+  width: 250;
+}
+.stat{
+  x:10;
+  y:10;
+  height: 230;
+  width: 230;
+  arc-width:20;
+}
+#cals{
+  start-angle:90;
+}
+#am{
+  start-angle:180;
+}
+#dist{
+  start-angle:270;
+}
+
+/* Legend symbols */
+#activity-symbol{
+  height: 38;
+  width: 38;
+}
+
+ #steps-legend{
+   x:100%-46;
+   y:8;
+ }
+ #cals-legend{
+  x:100%-46;
+  y:100%-46;
+}
+#am-legend{
+  x:8;
+  y:100%-46;
+}
+#dist-legend{
+  x:8;
+  y:8;
+}
+/* Elevation */
+#elevation-legend{
+  height: 30;
+  width: 30;
+}
+#elevation-text image{
+  x:$;
+  width: 20;
+  height: 30;    
+}
+
+.bigsarcs-container{
+  x:50%-150;
+  y:50%-150;
+  height: 300;
+  width: 300;
+}
+.bigsarcs-container .back{
+  height: 300;
+  width: 300;
+  arc-width:12;
+}
+.bigsarcs-container .front{
+  height: 296;
+  width: 296;
+  x:2;
+  y:2;
+  arc-width:8;
+}
+
+.battery-arc-back{  
+  start-angle:239;
+  sweep-angle:62;
+  fill: #E5A839;
+}
+#battery-arc{
+  start-angle:240;
+  sweep-angle:60;
+  fill: black;
+}
+.elevation-arc-back{  
+  start-angle:59;
+  sweep-angle:62;
+}
+#elevation-arc{
+  start-angle:60;
+  sweep-angle:60;
+  fill:black;
+}
+/* Weather */
+#weather-image{
+  x: 50%-40;
+  y: 50%-88;
+  height: 80;
+  width: 80;
+  href:"images/weather/9.png";
+}
+#weather-debug{
+  x:50%;
+  y:50%+12;
+  font-size: 25;
+  text-anchor: middle;
+  font-family: Seville-Bold;
+  font-weight: bold;
+  text-length:16;
+}
+#weather-temp{
+  y:50%+24;
+}
+#weather-temp image{
+  x:$;
+  width: 20;
+  height: 44;
+}

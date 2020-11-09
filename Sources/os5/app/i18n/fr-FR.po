@@ -1,0 +1,86 @@
+msgid "m1"
+msgstr "Janvier"
+
+msgid "m2"
+msgstr "Février"
+
+msgid "m3"
+msgstr "Mars"
+
+msgid "m4"
+msgstr "Avril"
+
+msgid "m5"
+msgstr "Mai"
+
+msgid "m6"
+msgstr "Juin"
+
+msgid "m7"
+msgstr "Juillet"
+
+msgid "m8"
+msgstr "Août"
+
+msgid "m9"
+msgstr "Septembre"
+
+msgid "m10"
+msgstr "Octobre"
+
+msgid "m11"
+msgstr "Novembre"
+
+msgid "m12"
+msgstr "Décembre"
+
+msgid "d1"
+msgstr "Dimanche"
+
+msgid "d2"
+msgstr "Lundi"
+
+msgid "d3"
+msgstr "Mardi"
+
+msgid "d4"
+msgstr "Mercredi"
+
+msgid "d5"
+msgstr "Jeudi"
+
+msgid "d6"
+msgstr "Vendredi"
+
+msgid "d7"
+msgstr "Samedi"
+
+msgid "w0"
+msgstr "Ciel clair"
+
+msgid "w1"
+msgstr "Peu de nuages"
+
+msgid "w2"
+msgstr "Nuages épars"
+
+msgid "w3"
+msgstr "Très nuageux"
+
+msgid "w4"
+msgstr "Forte pluie"
+
+msgid "w5"
+msgstr "Pluie"
+
+msgid "w6"
+msgstr "Orage"
+
+msgid "w7"
+msgstr "Neige"
+
+msgid "w8"
+msgstr "Brume"
+
+msgid "w9"
+msgstr "Inconnu"
